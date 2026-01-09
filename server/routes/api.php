@@ -25,7 +25,7 @@ Route::get('/jobs/{id}', [JobController::class, 'show']); // Detail job
 Route::post('/messages', [MessageController::class, 'store']);
 
 
-// Public route: baca setting (publik)
+// Public route
 Route::get('/settings/{key}', [SettingsController::class, 'show']);
 
 // protected routes atau utk admin yang sdh login
@@ -37,20 +37,20 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
-    // --- ADMIN PORTFOLIO (CRUD) ---
+    // ADMIN PORTFOLIO (CRUD) 
     Route::post('/portfolios', [PortfolioController::class, 'store']);      // Tambah
     Route::put('/portfolios/{id}', [PortfolioController::class, 'update']);   // Edit
     Route::delete('/portfolios/{id}', [PortfolioController::class, 'destroy']); // Hapus
 
-    // --- ADMIN JOBS (CRUD) ---
+    // ADMIN JOBS (CRUD)
     Route::post('/jobs', [JobController::class, 'store']);
     Route::put('/jobs/{id}', [JobController::class, 'update']);
     Route::delete('/jobs/{id}', [JobController::class, 'destroy']);
 
-    // --- ADMIN MESSAGES (LIHAT & HAPUS) ---
+    // ADMIN MESSAGES (LIHAT & HAPUS)
     Route::get('/messages', [MessageController::class, 'index']); // Lihat inbox
     Route::delete('/messages/{id}', [MessageController::class, 'destroy']); // Hapus pesan
 
-    // --- SETTINGS (update only) ---
+    // SETTINGS (update only)
     Route::post('/settings/{key}', [SettingsController::class, 'update']);
 });

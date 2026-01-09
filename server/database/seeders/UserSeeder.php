@@ -16,8 +16,8 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'Admin Titik Visual',
-            'email' => 'admin@titikvisual.com', // Email untuk login
-            'password' => Hash::make('password123'), // Password (ganti jika mau)
+            'email' => 'admin@titikvisual.com', 
+            'password' => Hash::make('password123'), 
         ]);
     }
 }

@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Job; // <-- 1. IMPORT MODEL KITA
+use App\Models\Job; 
 use Illuminate\Support\Facades\DB;
 
 class JobSeeder extends Seeder
@@ -14,12 +14,9 @@ class JobSeeder extends Seeder
      */
     public function run(): void
     {
-        // 2. Kosongkan tabelnya dulu
         DB::table('jobs')->truncate();
 
-        // 3. Siapkan data
         $jobs = [
-            // --- DATA MAGANG (16 item) ---
             [
                 'title' => 'UI/UX Designer',
                 'description' => 'Merancang antarmuka pengguna yang intuitif dan pengalaman pengguna...',
@@ -290,7 +287,6 @@ class JobSeeder extends Seeder
             ],
         ];
 
-        // 4. Masukkan semua data ke database
         Job::insert($jobs);
     }
 }

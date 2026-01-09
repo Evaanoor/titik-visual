@@ -14,7 +14,7 @@ class Message extends Model
      *
      * @var array<int, string>
      */
-    // --- TAMBAHKAN ARRAY INI ---
+
     protected $fillable = [
         'nama',
         'email',

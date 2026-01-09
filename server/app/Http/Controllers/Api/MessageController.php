@@ -35,12 +35,10 @@ class MessageController extends Controller
             'detail' => 'required|string',
         ]);
 
-        // 4. JIKA VALIDASI GAGAL, KIRIM ERROR 422
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        // 5. JIKA BERHASIL, SIMPAN KE DATABASE
         $message = Message::create($request->all());
 
         // 6. KIRIM BALASAN SUKSES (KODE 201 = CREATED)

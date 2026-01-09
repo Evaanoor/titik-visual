@@ -11,10 +11,9 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    // --- 1. FUNGSI REGISTER (Daftar User Baru) ---
     public function register(Request $request)
     {
-        // Validasi Input
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -25,14 +24,12 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        // Buat User Baru
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password), // Hash password biar aman
         ]);
 
-        // Buat Token (Kunci Masuk)
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
@@ -43,20 +40,17 @@ class AuthController extends Controller
         ], 201);
     }
 
-    // --- 2. FUNGSI LOGIN (Masuk) ---
     public function login(Request $request)
     {
-        // Cek apakah email & password cocok
+ 
         if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json([
                 'message' => 'Email atau password salah'
             ], 401);
         }
 
-        // Jika cocok, ambil data user
         $user = User::where('email', $request['email'])->firstOrFail();
 
-        // Buat Token Baru
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
@@ -67,7 +61,6 @@ class AuthController extends Controller
         ]);
     }
 
-    // --- 3. FUNGSI LOGOUT (Keluar) ---
     public function logout(Request $request)
     {
         // Hapus semua token user ini (cabut kunci)

@@ -38,7 +38,7 @@ class PortfolioController extends Controller
         // Upload gambar
         $imagePath = $request->file('image')->store('portfolios', 'public');
 
-        // Simpan ke database
+        // Simpan ke db
         $portfolio = Portfolio::create([
             'title' => $validated['title'],
             'client' => $validated['client'],

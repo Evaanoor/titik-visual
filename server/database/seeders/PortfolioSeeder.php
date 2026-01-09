@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Portfolio; // <-- 1. IMPORT MODEL KITA
-use Illuminate\Support\Facades\DB; // (Opsional, tapi bagus untuk 'truncate')
+use App\Models\Portfolio;
+use Illuminate\Support\Facades\DB; 
 
 class PortfolioSeeder extends Seeder
 {
@@ -14,17 +14,17 @@ class PortfolioSeeder extends Seeder
      */
     public function run(): void
     {
-        // 2. Kosongkan tabelnya dulu agar tidak duplikat
+
         DB::table('portfolios')->truncate();
 
-        // 3. Siapkan data (sesuai 12 kartu di frontend)
+
         $portfolios = [
-            // --- BARIS 1 (Featured) ---
+
             [
                 'title' => 'E-Commerce Mobile App',
                 'client' => 'ShopNow Indonesia',
                 'description' => 'Complete mobile app design untuk platform e-commerce...',
-                'image' => 'portfolios/portofolio-project.png', //INI DIGANTI YAAA NNTI SESUAI NAMA FILE
+                'image' => 'portfolios/portofolio-project.png', 
                 'tag' => 'UI/UX Design',
                 'year' => '2024',
                 'tags' => json_encode(['Mobile', 'E-commerce', 'iOS']),
@@ -50,9 +50,9 @@ class PortfolioSeeder extends Seeder
                 'tags' => json_encode(['Mobile App', 'Banking', 'Security']),
                 'is_featured' => false,
             ],
-            // --- BARIS 2 ---
+
             [
-                'title' => 'E-Commerce Mobile App', // (Ini duplikat sesuai desain)
+                'title' => 'E-Commerce Mobile App', 
                 'client' => 'ShopNow Indonesia',
                 'description' => 'Complete mobile app design untuk platform e-commerce...',
                 'image' => 'portfolios/portofolio-project.png',
@@ -62,7 +62,7 @@ class PortfolioSeeder extends Seeder
                 'is_featured' => true,
             ],
             [
-                'title' => 'SaaS Dashboard Design', // (Ini duplikat sesuai desain)
+                'title' => 'SaaS Dashboard Design', 
                 'client' => 'DataFlow Solutions',
                 'description' => 'Dashboard design untuk SaaS platform dengan data visualization...',
                 'image' => 'portfolios/portofolio-project.png',
@@ -81,9 +81,9 @@ class PortfolioSeeder extends Seeder
                 'tags' => json_encode(['Web App', 'Corporate', 'Responsive']),
                 'is_featured' => false,
             ],
-            // --- BARIS 3 ---
+
             [
-                'title' => 'Banking Mobile App', // (Ini duplikat sesuai desain)
+                'title' => 'Banking Mobile App', 
                 'client' => 'SecureBank Digital',
                 'description' => 'Secure dan user-friendly banking app dengan modern interface...',
                 'image' => 'portfolios/portofolio-project.png',
