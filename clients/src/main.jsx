@@ -30,6 +30,12 @@ import ProtectedRoute from './components/ProtectedRoute.jsx';
 import './index.css';
 import ErrorBoundary from './components/ErrorBoundary.jsx';
 
+// Base URL for backend API. Set via Vite env: VITE_API_URL
+// Fallback to http://127.0.0.1:8000 for local dev.
+// Use VITE_API_URL when provided; fall back to localhost for dev.
+// Provide a clear default for local development
+window.__API_BASE__ = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 const router = createBrowserRouter([
   {
     path: '/',          

@@ -20,7 +20,7 @@ useEffect(() => {
 const fetchPortfolios = async () => {
   try {
     
-    const response = await fetch('http://127.0.0.1:8000/api/portfolios');
+    const response = await fetch(window.__API_BASE__ + '/api/portfolios');
     const data = await response.json();
     
     
@@ -48,7 +48,7 @@ const fetchPortfolios = async () => {
           <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all" key={item.id}>
             <div className="relative w-full h-64 bg-gray-200">
               {}
-              <img src={`http://127.0.0.1:8000/storage/${item.image}`} alt={item.title} className="w-full h-full object-cover" />
+              <img src={`${window.__API_BASE__}/storage/${item.image}`} alt={item.title} className="w-full h-full object-cover" />
               {item.is_featured === 1 && (
                   <span className="absolute top-4 left-4 bg-gradient-to-r from-orange-400 to-pink-400 text-white px-3 py-1 rounded-full text-xs font-semibold">Featured</span>
                 )}

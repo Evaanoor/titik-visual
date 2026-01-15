@@ -7,7 +7,7 @@ function PortofolioGrid() {
   const [portfolios, setPortfolios] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/portfolios")
+    fetch(window.__API_BASE__ + "/api/portfolios")
       .then((res) => res.json())
       .then((data) => setPortfolios(data))
       .catch((err) => console.error("Error fetch portfolios:", err));
@@ -20,7 +20,7 @@ function PortofolioGrid() {
           <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all" key={item.id}>
             <div className="relative w-full h-64 bg-gray-200 overflow-hidden">
               <img 
-                src={`http://127.0.0.1:8000/storage/${item.image}`} 
+                src={`${window.__API_BASE__}/storage/${item.image}`} 
                 alt={item.title}
                 className="w-full h-full object-cover rounded-t-lg"
               />

@@ -25,9 +25,9 @@ function Dashboard() {
         const token = localStorage.getItem('auth_token');
         
         const [portfolioRes, jobsRes, messagesRes] = await Promise.all([
-          fetch('http://127.0.0.1:8000/api/portfolios'),
-          fetch('http://127.0.0.1:8000/api/jobs'),
-          fetch('http://127.0.0.1:8000/api/messages', {
+          fetch(window.__API_BASE__ + '/api/portfolios'),
+          fetch(window.__API_BASE__ + '/api/jobs'),
+          fetch(window.__API_BASE__ + '/api/messages', {
             headers: {
               'Authorization': `Bearer ${token}`,
             },
@@ -75,7 +75,7 @@ function Dashboard() {
   useEffect(() => {
     const checkSystemStatus = async () => {
       try {
-        const apiResponse = await fetch('http://127.0.0.1:8000/api/portfolios', {
+        const apiResponse = await fetch(window.__API_BASE__ + '/api/portfolios', {
           method: 'GET',
         });
         
@@ -183,7 +183,7 @@ function WhatsAppSetting() {
     const fetchPhone = async () => {
       try {
         const token = localStorage.getItem('auth_token');
-        const res = await fetch('http://127.0.0.1:8000/api/settings/whatsapp_phone', {
+        const res = await fetch(window.__API_BASE__ + '/api/settings/whatsapp_phone', {
           headers: token ? { 'Authorization': `Bearer ${token}` } : {},
         });
         if (res.ok) {
@@ -205,7 +205,7 @@ function WhatsAppSetting() {
     const normalized = cleaned.startsWith('0') ? '62' + cleaned.slice(1) : cleaned;
     const token = localStorage.getItem('auth_token');
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/settings/whatsapp_phone', {
+      const res = await fetch(window.__API_BASE__ + '/api/settings/whatsapp_phone', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -231,7 +231,7 @@ function WhatsAppSetting() {
   const reset = async () => {
     const token = localStorage.getItem('auth_token');
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/settings/whatsapp_phone', {
+      const res = await fetch(window.__API_BASE__ + '/api/settings/whatsapp_phone', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

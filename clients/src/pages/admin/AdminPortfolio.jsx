@@ -16,7 +16,7 @@ function AdminPortfolio() {
 
   const fetchPortfolios = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/portfolios');
+      const response = await fetch(window.__API_BASE__ + '/api/portfolios');
       const data = await response.json();
       setPortfolios(data);
     } catch (error) {
@@ -30,7 +30,7 @@ function AdminPortfolio() {
     if (!window.confirm('Yakin ingin menghapus proyek ini?')) return;
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/portfolios/${id}`, {
+      const response = await fetch(`${window.__API_BASE__}/api/portfolios/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -107,7 +107,7 @@ function AdminPortfolio() {
                     <tr key={item.id} className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
                       <td className="px-6 py-4">
                         <img
-                          src={`http://127.0.0.1:8000/storage/${item.image}`}
+                          src={`${window.__API_BASE__}/storage/${item.image}`}
                           alt="Portfolio"
                           className="w-16 h-16 object-cover rounded-lg"
                         />

@@ -30,7 +30,7 @@ function MagangGrid() {
   useEffect(() => {
     const fetchPhone = async () => {
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/settings/whatsapp_phone');
+        const res = await fetch(window.__API_BASE__ + '/api/settings/whatsapp_phone');
         if (res.ok) {
           const json = await res.json();
           const p = json.value || DEFAULT_WA;
@@ -57,7 +57,7 @@ function MagangGrid() {
   const fetchJobs = async () => {
     try {
       
-      const response = await fetch('http://127.0.0.1:8000/api/jobs');
+      const response = await fetch(window.__API_BASE__ + '/api/jobs');
       const data = await response.json();
       
       

@@ -33,7 +33,7 @@ function AdminPortfolioForm() {
 
   const fetchPortfolioDetail = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/portfolios/${id}`);
+      const response = await fetch(`${window.__API_BASE__}/api/portfolios/${id}`);
       if (!response.ok) throw new Error('Gagal mengambil data portfolio');
       
       const data = await response.json();
@@ -52,7 +52,7 @@ function AdminPortfolioForm() {
       });
 
       
-      setPreviewImage(`http://127.0.0.1:8000/storage/${data.image}`);
+      setPreviewImage(`${window.__API_BASE__}/storage/${data.image}`);
       
     } catch (error) {
       console.error('Error:', error);
@@ -101,14 +101,12 @@ function AdminPortfolioForm() {
       }
 
       
-      let url = 'http://127.0.0.1:8000/api/portfolios';
+      let url = window.__API_BASE__ + '/api/portfolios';
       let method = 'POST';
 
       if (isEditMode) {
-        url = `http://127.0.0.1:8000/api/portfolios/${id}`;
-        
-        
-        dataToSend.append('_method', 'PUT'); 
+        url = `${window.__API_BASE__}/api/portfolios/${id}`;
+        dataToSend.append('_method', 'PUT');
       }
 
       const response = await fetch(url, {

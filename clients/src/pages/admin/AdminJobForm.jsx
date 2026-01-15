@@ -37,7 +37,7 @@ function AdminJobForm() {
 
   const fetchJobDetail = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/jobs/${id}`);
+      const response = await fetch(`${window.__API_BASE__}/api/jobs/${id}`);
       const data = await response.json();
       
       
@@ -78,11 +78,11 @@ function AdminJobForm() {
           : null,
       };
 
-      let url = 'http://127.0.0.1:8000/api/jobs';
+      let url = window.__API_BASE__ + '/api/jobs';
       let method = 'POST';
 
       if (isEditMode) {
-        url = `http://127.0.0.1:8000/api/jobs/${id}`;
+        url = `${window.__API_BASE__}/api/jobs/${id}`;
         method = 'PUT';
       }
 

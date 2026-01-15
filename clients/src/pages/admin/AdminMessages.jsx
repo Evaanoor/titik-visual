@@ -17,7 +17,7 @@ function AdminMessages() {
 
   const fetchMessages = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/messages', {
+      const response = await fetch(window.__API_BASE__ + '/api/messages', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

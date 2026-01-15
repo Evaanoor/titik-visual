@@ -19,7 +19,7 @@ function AdminJobs() {
 
   const fetchJobs = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/jobs');
+      const response = await fetch(window.__API_BASE__ + '/api/jobs');
       const data = await response.json();
       setJobs(data);
     } catch (error) {
@@ -34,7 +34,7 @@ function AdminJobs() {
     if (!window.confirm('Yakin ingin menghapus lowongan ini?')) return;
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/jobs/${id}`, {
+      const response = await fetch(`${window.__API_BASE__}/api/jobs/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
